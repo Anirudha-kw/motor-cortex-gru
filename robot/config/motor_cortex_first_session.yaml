@@ -1,0 +1,6 @@
+# First-session overrides, loaded after motor_cortex_controller.yaml when first_session:=true (the default).
+# In the closed-loop harness (tests/harness.cpp) the policy's peak torques at 6 cm reaches in the curl field were
+# 15.5 13.4 11.3 10.6 0.9 2.9 0.1 N m, so these caps leave normal behaviour unclipped and halve what a fault can do.
+motor_cortex_controller:
+    tau_cap: [20.0, 20.0, 20.0, 20.0, 5.0, 5.0, 5.0]
+    reach_radius: 0.06

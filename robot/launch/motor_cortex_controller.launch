@@ -1,0 +1,23 @@
+<?xml version="1.0" ?>
+<!-- Motor-cortex controller: brings up franka_control and spawns motor_cortex_controller in HOLD mode (it holds the
+     arm where it is; nothing moves until a "home" or "start" command).  See ROBOT_COMMANDS.md. -->
+<launch>
+  <arg name="robot" default="panda" doc="choose your robot. Possible values: [panda, fr3]"/>
+  <arg name="arm_id" default="$(arg robot)" />
+  <arg name="robot_ip" />
+  <arg name="load_gripper" default="false" doc="Enable only when a Franka Hand is mounted." />
+  <arg name="weights_path" default="$(find panda)/weights/motor_cortex_s2rR_s1.mcgru" />
+  <arg name="reach_radius" default="0.06" />
+  <arg name="first_session" default="true" doc="torque caps 20/5 N m and 6 cm reaches (config/motor_cortex_first_session.yaml)" />
+
+  <include file="$(find franka_control)/launch/franka_control.launch" pass_all_args="true">
+    <arg name="robot_ip" value="$(arg robot_ip)" />
+    <arg name="load_gripper" value="$(arg load_gripper)" />
+  </include>
+
+  <rosparam command="load" file="$(find panda)/config/motor_cortex_controller.yaml" subst_value="true" />
+  <rosparam command="load" file="$(find panda)/config/motor_cortex_first_session.yaml" if="$(arg first_session)" />
+
+  <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+        output="screen" args="motor_cortex_controller"/>
+</launch>

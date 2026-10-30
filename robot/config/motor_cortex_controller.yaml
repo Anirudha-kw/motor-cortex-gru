@@ -1,0 +1,30 @@
+# Motor-cortex controller (panda_controllers/MotorCortexController).  Loaded by motor_cortex_controller.launch with
+# subst_value, so launch-argument substitution works on this file (comments included: no dollar-paren in them).  Every value below is also the compiled default except weights_path.
+motor_cortex_controller:
+    type: panda_controllers/MotorCortexController
+    arm_id: $(arg arm_id)
+    joint_names:
+        - $(arg arm_id)_joint1
+        - $(arg arm_id)_joint2
+        - $(arg arm_id)_joint3
+        - $(arg arm_id)_joint4
+        - $(arg arm_id)_joint5
+        - $(arg arm_id)_joint6
+        - $(arg arm_id)_joint7
+    weights_path: $(arg weights_path)
+    reach_radius: $(arg reach_radius)      # m; 0.06 default, at most 0.12 (0.12 drove joint speeds to Franka's limits)
+    handle_offset: 0.10                    # the "hand": 10 cm past the flange along its z axis
+    tau_cap: [40.0, 40.0, 40.0, 40.0, 8.0, 8.0, 8.0]      # N m, on the policy's command (training used these)
+    delta_tau_max: 1.0                     # N m per 1 ms tick (training: 1000 N m/s)
+    ramp_time: 0.1                         # s, policy torque ramps in at each episode start
+    home_time: 8.0                         # s, minimum-jerk move to the trained start posture
+    home_max_distance: 1.0                 # rad, refuse homing from farther away
+    start_tolerance: 0.05                  # rad, |q - q_home| needed to start an episode
+    field_force_max: 30.0                  # N, cap on the virtual field at the handle
+    dq_max: [1.85, 1.85, 1.85, 1.85, 2.2, 2.2, 2.2]       # rad/s, trip (~85% of the Panda's limits)
+    handle_speed_max: 1.0                  # m/s, trip
+    joint_margin: 0.05                     # rad from a joint limit, trip
+    workspace_box: [0.25, 0.25, 0.15]      # m around the home handle position, trip
+    k_hold: [300.0, 300.0, 300.0, 300.0, 100.0, 80.0, 40.0]
+    d_hold: [30.0, 30.0, 30.0, 30.0, 10.0, 8.0, 5.0]
+    d_trip: [10.0, 10.0, 10.0, 10.0, 3.0, 3.0, 1.0]

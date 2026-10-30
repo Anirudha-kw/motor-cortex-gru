@@ -1,0 +1,9 @@
+# Tested: Python 3.12, jax 0.10.2 (CUDA 12), mujoco/mujoco-mjx 3.10.0, optax 0.2.8, numpy 2.5.1, matplotlib 3.11.1.
+# Install JAX for your accelerator separately, e.g. pip install -U "jax[cuda12]".
+jax>=0.4.30
+mujoco>=3.2
+mujoco-mjx>=3.2
+optax>=0.2
+numpy>=1.26
+matplotlib>=3.8
+pillow>=10
