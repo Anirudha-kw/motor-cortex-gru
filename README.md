@@ -6,6 +6,8 @@ the curl force-field experiment of motor neuroscience (Shadmehr & Mussa-Ivaldi 1
 episodes of random force fields, the same network adapts *within* an episode with its weights frozen. It then runs
 on a real Panda as a 1 kHz `franka_ros` controller.
 
+If this project is useful in your work, please [cite it](#citation).
+
 <p align="center">
   <img src="docs/panda_hardware.gif" width="560" alt="The GRU controller driving a real Franka Panda through 6 cm reaches">
   <br><em>The deployed GRU controller on a real Panda: 6 cm reaches out and back from the start posture (real time,
@@ -146,16 +148,24 @@ MUJOCO_PKG=$(python -c "import mujoco, os; print(os.path.dirname(mujoco.__file__
   over-compensation with long training (details in [docs/EXPERIMENTS.md](docs/EXPERIMENTS.md)).
 - The real-robot logs (about 275 MB) are not in the repository.
 
-## License and citation
+## Citation
 
-MIT, see [LICENSE](LICENSE). The Panda model comes from
-[MuJoCo Menagerie](https://github.com/google-deepmind/mujoco_menagerie) (Apache-2.0) and is downloaded separately.
+If you use this code or build on its results, please cite:
 
 ```bibtex
 @misc{karande2026motorcortex,
-  author       = {Anirudha Karande},
-  title        = {A Recurrent Motor-Cortex Model on a Franka Panda},
+  author       = {Karande, Anirudha},
+  title        = {A Recurrent Motor-Cortex Model on a {Franka Panda}},
   year         = {2026},
-  howpublished = {\url{https://github.com/Anirudha-kw/motor-cortex-gru}}
+  howpublished = {\url{https://github.com/Anirudha-kw/motor-cortex-gru}},
+  note         = {{GitHub} repository}
 }
 ```
+
+GitHub's **Cite this repository** button, generated from [CITATION.cff](CITATION.cff), gives the same reference in APA
+and BibTeX.
+
+## License
+
+MIT, see [LICENSE](LICENSE). The Panda model comes from
+[MuJoCo Menagerie](https://github.com/google-deepmind/mujoco_menagerie) (Apache-2.0) and is downloaded separately.

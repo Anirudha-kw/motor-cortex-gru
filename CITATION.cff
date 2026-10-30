@@ -1,0 +1,29 @@
+cff-version: 1.2.0
+message: "If you use this code or build on its results, please cite it as below."
+type: software
+title: "A Recurrent Motor-Cortex Model on a Franka Panda"
+abstract: >-
+  A 128-unit GRU "motor cortex" learns to control a six-muscle human arm and a torque-controlled 7-DoF Franka
+  Panda by backpropagation through a differentiable plant, and is tested with the curl force-field paradigm of
+  motor neuroscience. Meta-trained on random force fields, it adapts within an episode with frozen weights.
+  Retrained for sim-to-real, it runs on a real Panda as a 1 kHz franka_ros controller, where pre-registered
+  sessions measure its adaptation.
+authors:
+  - family-names: Karande
+    given-names: Anirudha
+    affiliation: Worcester Polytechnic Institute
+repository-code: "https://github.com/Anirudha-kw/motor-cortex-gru"
+url: "https://github.com/Anirudha-kw/motor-cortex-gru"
+license: MIT
+date-released: "2026-10-30"
+keywords:
+  - motor control
+  - force-field adaptation
+  - recurrent neural networks
+  - in-context adaptation
+  - meta-learning
+  - sim-to-real
+  - Franka Panda
+  - MuJoCo MJX
+  - JAX
+  - ROS
